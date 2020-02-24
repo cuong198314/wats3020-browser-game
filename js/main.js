@@ -285,7 +285,7 @@ class TicTacToe {
     this.setUpTileListeners();
 
 
-initializeMovePrompt() ;
+initializeMovePrompt() {
     // This method initializes the `this.movePrompt` element.
 
 
@@ -300,8 +300,8 @@ initializeMovePrompt() ;
 
 
     this.currentPlayerToken.setAttribute('class', `fas fa-${this.currentPlayer.token}`);
-
-start() ;
+}
+start() {
     console.log('start game');
     // This method handles the logic to create a new game. It primarily has
     // two duties in the basic version of the game:
@@ -314,7 +314,7 @@ start() ;
     this.initializeMovePrompt();
     console.log('init move prompt');
 
-
+}
  // End of the Tic Tac Toe Class definition.
 
 // Outside of the Class definitions, we need a few items to control the game
