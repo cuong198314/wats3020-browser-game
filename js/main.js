@@ -15,7 +15,7 @@ class TicTacToe {
     constructor() {
 
         this.player1 = new Player('times');
-        this.player2 = new player('circle');
+        this.player2 = new Player('circle');
 
 
 
@@ -30,10 +30,10 @@ class TicTacToe {
         this.moveCount = 0;
 
 
-        this.startPrompt = document.querySelector('#start-Prompt');
+        this.startPrompt = document.querySelector('#start-prompt');
 
 
-        this.movePrompt = document.querySelector('#move-Prompt');
+        this.movePrompt = document.querySelector('#move-prompt');
 
 
         this.currentPlayerToken = document.querySelector('#player-token');
@@ -161,10 +161,10 @@ class TicTacToe {
         // 3. Set the class attribute of the tile to reflect which player has claimed it
 
 
-        let tile_x = event.target.dataset.x;
+        let tile_x = (event.target.dataset.x);
 
 
-        let tile_y = event.target.dataset.y;
+        let tile_y = (event.target.dataset.y);
 
 
         if (!this.gameState[tile_x][tile_y]) {
@@ -187,10 +187,10 @@ class TicTacToe {
         // `this.player2`. If not, set `this.currentPlayer` equal to
         // `this.player1`. (You will use an if/else statement to do this.)
         if (this.currentPlayer === this.Player1) {
-            this.currentPlayer = this.player2;
+            this.currentPlayer = this.Player2;
 
         } else {
-            this.currentPlayer = this.player1;
+            this.currentPlayer = this.Player1;
         }
 
 
@@ -249,7 +249,7 @@ class TicTacToe {
             for (let j = 0; j < 3; j++)
 
 
-            let newCol = document.createElement('div');
+                let newCol = document.createElement('div');
 
 
             newCol.setAttribute('class', 'col-xs-3');
@@ -283,98 +283,98 @@ class TicTacToe {
     }
 
     this.setUpTileListeners();
-
-
-initializeMovePrompt() {
-    // This method initializes the `this.movePrompt` element.
-
-
-    this.startPrompt.setAttribute('class', 'hidden');
-
-
-
-    this.movePrompt.setAttribute('class', '');
-
-
-    this.currentPlayer = this.player1;
-
-
-    this.currentPlayerToken.setAttribute('class', `fas fa-${this.currentPlayer.token}`);
 }
-start() {
-    console.log('start game');
-    // This method handles the logic to create a new game. It primarily has
-    // two duties in the basic version of the game:
+
+    initializeMovePrompt() {
+        // This method initializes the `this.movePrompt` element.
 
 
-    this.setUpTileListeners();
-    console.log('set up board');
-
-
-    this.initializeMovePrompt();
-    console.log('init move prompt');
-
-}
- // End of the Tic Tac Toe Class definition.
-
-// Outside of the Class definitions, we need a few items to control the game
-// so our players can successfull play.
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
+        this.startPrompt.setAttribute('class', 'hidden');
 
 
 
-
-    let startButton = document.querySelector('#start-button');
-
-
-    startButton.addEventListener('click', (event) => {
-        game = new TicTacToe();
+        this.movePrompt.setAttribute('class', '');
 
 
+        this.currentPlayer = this.player1;
 
-        game.start();
+
+        this.currentPlayerToken.setAttribute('class', `fas fa-${this.currentPlayer.token}`);
+    }
+    start() {
+        console.log('start game');
+        // This method handles the logic to create a new game. It primarily has
+        // two duties in the basic version of the game:
+
+
+        this.setUpBoard();
+        console.log('set up board');
+
+
+        this.initializeMovePrompt();
+        console.log('init move prompt');
+
+    }
+    // End of the Tic Tac Toe Class definition.
+
+    // Outside of the Class definitions, we need a few items to control the game
+    // so our players can successfull play.
+
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+
+
+
+        let startButton = document.querySelector('#start-button');
+
+
+        startButton.addEventListener('click', (event) => {
+            game = new TicTacToe();
+
+
+
+            game.start();
+
+        });
+        // NOTE: End of the `startButton` event listener here.
 
     });
-    // NOTE: End of the `startButton` event listener here.
-
-});
-// NOTE: End of the "DOMContentLoaded" event listener here.
+    // NOTE: End of the "DOMContentLoaded" event listener here.
 
 
 
-// TODO: Add an event listener on the `document` object that listens for the
-// "win" event signal.
-document.addEventListener('win', (event) => {
+    // TODO: Add an event listener on the `document` object that listens for the
+    // "win" event signal.
+    document.addEventListener('win', (event) => {
 
 
 
 
-    console.log('win event fired');
-    game.showWinScreen();
-})
+        console.log('win event fired');
+        game.showWinScreen();
+    })
 
-// NOTE: End of the "win" event listener.
-
-
-document.addEventListener('draw', (event) => {
-    console.log('draw event fired');
-    game.showWinScreen();
-})
+    // NOTE: End of the "win" event listener.
 
 
+    document.addEventListener('draw', (event) => {
+        console.log('draw event fired');
+        game.showWinScreen();
+    })
 
-// NOTE: End of the "draw" event listener.
 
-// External function for event listeners provided for you.
-function handleMove(event) {
-    // Record the move for the current player.
-    game.recordMove(event);
 
-    // Check to see if the last move was a winning move.
-    game.checkForWinner();
+    // NOTE: End of the "draw" event listener.
 
-    // Rotate players.
-    game.switchPlayer();
-}
+    // External function for event listeners provided for you.
+    function handleMove(event) {
+        // Record the move for the current player.
+        game.recordMove(event);
+
+        // Check to see if the last move was a winning move.
+        game.checkForWinner();
+
+        // Rotate players.
+        game.switchPlayer();
+    }
