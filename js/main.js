@@ -186,11 +186,11 @@ class TicTacToe {
         // is equal to `this.player1` If so, set `this.currentPlayer` to
         // `this.player2`. If not, set `this.currentPlayer` equal to
         // `this.player1`. (You will use an if/else statement to do this.)
-        if (this.currentPlayer === this.Player1) {
-            this.currentPlayer = this.Player2;
+        if (this.currentPlayer === this.player1) {
+            this.currentPlayer = this.player2;
 
         } else {
-            this.currentPlayer = this.Player1;
+            this.currentPlayer = this.player1;
         }
 
 
@@ -246,45 +246,45 @@ class TicTacToe {
             // TODO: Create another `for` loop to make the colums to contain the
             // tiles. This `for` loop should also loop 3 times. The counter
             // variable in this loop should be called `j`.
-            for (let j = 0; j < 3; j++)
-
+            for (let j = 0; j < 3; j++) {
+{
 
                 let newCol = document.createElement('div');
 
 
-            newCol.setAttribute('class', 'col-xs-3');
+                newCol.setAttribute('class', 'col-xs-3');
 
 
-            let newTile = document.createElement('span');
+                let newTile = document.createElement('span');
 
 
-            newTile.setAttribute('class', 'fas fa-question tile');
+                newTile.setAttribute('class', 'fas fa-question tile');
 
 
-            newTile.setAttribute('data-x', i);
+                newTile.setAttribute('data-x', i);
 
 
-            newTile.setAttribute('data-y', j);
+                newTile.setAttribute('data-y', j);
 
 
 
-            newCol.appendChild(newTile);
+                newCol.appendChild(newTile);
 
 
-            newRow.appendChild(newCol);
+                newRow.appendChild(newCol);
 
-            // NOTE: Your second `for` loop should end here.
+                // NOTE: Your second `for` loop should end here.
+            }
+
+
+            this.gameboard.appendChild(newRow);
+
+            // NOTE: Your first `for` loop should end here.
         }
 
+        this.setUpTileListeners();
 
-        this.gameboard.appendChild(newRow);
-
-        // NOTE: Your first `for` loop should end here.
     }
-
-    this.setUpTileListeners();
-}
-
     initializeMovePrompt() {
         // This method initializes the `this.movePrompt` element.
 
@@ -320,7 +320,7 @@ class TicTacToe {
     // Outside of the Class definitions, we need a few items to control the game
     // so our players can successfull play.
 
-
+    }
     document.addEventListener('DOMContentLoaded', (event) => {
 
 
@@ -359,7 +359,7 @@ class TicTacToe {
 
 
     document.addEventListener('draw', (event) => {
-        console.log('draw event fired');
+        this.showDrawScreen();
         game.showWinScreen();
     })
 
